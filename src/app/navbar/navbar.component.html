@@ -26,10 +26,17 @@
         </select>
         <input
           class="form-control me-2"
-          type="search"
+          type="text"
           placeholder="Search"
-          aria-label="Search" />
-        <button class="btn btn-outline-success" type="submit">Search</button>
+          aria-label="Search"
+          [(ngModel)]="searchTerm"
+          (keyup.enter)="onSearch(searchTerm, '')" />
+        <button
+          class="btn btn-outline-success"
+          type="text"
+          (click)="onSearch(searchTerm, '')">
+          Search
+        </button>
       </form>
     </div>
   </div>

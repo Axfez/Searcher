@@ -16,4 +16,10 @@ export class ImagesDisplayComponent implements OnInit {
       console.log(data);
     });
   }
+  search(searchTerm: string, category: string) {
+    this.http.searchImages(searchTerm, category).subscribe(data => {
+      this.images = data['hits'];
+      console.log(data);
+    });
+  }
 }

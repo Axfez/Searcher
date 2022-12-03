@@ -9,6 +9,7 @@ import { Image } from '../images-display/shared/image.model';
 export class ImageCardComponent {
   visibility: boolean = false;
   @Input() image: Image;
+
   // Check click on Image for display info and dispatch data to store
   onPreview() {
     if (this.visibility) {
@@ -16,6 +17,5 @@ export class ImageCardComponent {
     } else {
       this.visibility = true;
     }
-    console.log(this.visibility);
   }
 }

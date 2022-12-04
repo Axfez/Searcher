@@ -8,18 +8,24 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class NavbarComponent {
   @Output() search = new EventEmitter<string>();
   @Output() categoryPicked = new EventEmitter<string>();
+
   searchTerm = '';
   category = '';
   categories: string[] = [
-    'Science',
-    'Education',
-    'People',
-    'Feelings',
-    'Computer',
-    'Buildings',
+    'science',
+    'education',
+    'people',
+    'feelings',
+    'computer',
+    'buildings',
   ];
-  onSearch(searchTerm: string, category: string) {
+
+  onSearchTerm(searchTerm: string) {
     this.search.emit(searchTerm);
+    console.log(searchTerm);
+  }
+  onSearchCategory(category: string) {
     this.categoryPicked.emit(category);
+    console.log(category);
   }
 }

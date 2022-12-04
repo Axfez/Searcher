@@ -17,26 +17,29 @@
           <a class="nav-link active" aria-current="page" href="">Home</a>
         </li>
       </ul>
-      <form class="d-flex gap-2" role="search">
-        <select class="form-select" aria-label="select">
-          <option selected>Pick a Category</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-        <input
-          class="form-control me-2"
-          type="text"
-          placeholder="Search"
-          aria-label="Search"
-          (keyup.enter)="onSearch(searchTerm, '')" />
-        <button
-          class="btn btn-outline-success"
-          type="text"
-          (click)="onSearch(searchTerm, '')">
-          Search
-        </button>
-      </form>
+      <select
+        (click)="onSearchCategory(category)"
+        class="form-select"
+        aria-label="select"
+        [(ngModel)]="category">
+        <option selected>Pick a Category</option>
+        <option *ngFor="let category of categories">
+          {{ category }}
+        </option>
+      </select>
+      <input
+        class="form-control me-2"
+        type="text"
+        placeholder="Search"
+        aria-label="Search"
+        [(ngModel)]="searchTerm"
+        (keyup.enter)="onSearchTerm(searchTerm)" />
+      <button
+        class="btn btn-outline-success"
+        type="text"
+        (click)="onSearchTerm(searchTerm)">
+        Search
+      </button>
     </div>
   </div>
 </nav>

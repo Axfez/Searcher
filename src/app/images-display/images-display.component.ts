@@ -10,14 +10,21 @@ import { Image } from './shared/image.model';
 export class ImagesDisplayComponent implements OnInit {
   images: Image[] = [];
   constructor(private http: ImagesService) {}
+
   ngOnInit(): void {
     this.http.getImages().subscribe(data => {
       this.images = data['hits'];
       console.log(data);
     });
   }
-  search(searchTerm: string, category: string) {
-    this.http.searchImages(searchTerm, category).subscribe(data => {
+  searchTerm(searchTerm: string) {
+    this.http.searchImages(searchTerm).subscribe(data => {
+      this.images = data['hits'];
+      console.log(data);
+    });
+  }
+  searchCategory(category: string) {
+    this.http.searchCategory(category).subscribe(data => {
       this.images = data['hits'];
       console.log(data);
     });

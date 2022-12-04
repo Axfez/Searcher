@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Image } from '../images-display/shared/image.model';
-import { addImage, deleteImage } from '../state/actions/images.actions';
+import { addImage } from '../state/actions/images.actions';
 
 @Component({
   selector: 'app-image-card',

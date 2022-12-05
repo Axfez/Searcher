@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand">Pixabay Searcher</a>
+<nav class="navbar navbar-expand-xl navbar-dark fixed-top bg-dark">
+  <div class="container-fluid gap-1">
+    <span class="navbar-brand">Pixabay Searcher</span>
     <button
-      class="navbar-toggler"
+      class="navbar-toggler collapsed"
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navbarCollapse"
@@ -11,35 +11,41 @@
       aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+    <div class="navbar-collapse collapse gap-2" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-xl-0 gap-2">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="">Home</a>
+          <a class="nav-link active btn btn-dark" aria-current="page" href="">
+            <span>HOME</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <label for="category-select">Select a Category</label>
+          <select
+            (click)="onSearchCategory(category)"
+            class="form-select"
+            aria-label="select"
+            [(ngModel)]="category"
+            id="category-select">
+            <option *ngFor="let category of categories">
+              {{ category }}
+            </option>
+          </select>
         </li>
       </ul>
-      <select
-        (click)="onSearchCategory(category)"
-        class="form-select"
-        aria-label="select"
-        [(ngModel)]="category">
-        <option selected>Pick a Category</option>
-        <option *ngFor="let category of categories">
-          {{ category }}
-        </option>
-      </select>
-      <input
-        class="form-control me-2"
-        type="text"
-        placeholder="Search"
-        aria-label="Search"
-        [(ngModel)]="searchTerm"
-        (keyup.enter)="onSearchTerm(searchTerm)" />
-      <button
-        class="btn btn-outline-success"
-        type="text"
-        (click)="onSearchTerm(searchTerm)">
-        Search
-      </button>
+      <div class="d-flex gap-1" size="2">
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Search"
+          aria-label="Search"
+          [(ngModel)]="searchTerm"
+          (keyup.enter)="onSearchTerm(searchTerm)" />
+        <button
+          class="btn btn-outline-success"
+          (click)="onSearchTerm(searchTerm)">
+          Search!
+        </button>
+      </div>
     </div>
   </div>
 </nav>

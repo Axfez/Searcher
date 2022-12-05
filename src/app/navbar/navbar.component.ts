@@ -12,6 +12,7 @@ export class NavbarComponent {
   searchTerm = '';
   category = '';
   categories: string[] = [
+    '',
     'science',
     'education',
     'people',

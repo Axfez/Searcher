@@ -1,13 +1,26 @@
-import { createReducer, on } from '@ngrx/store';
-import { Image } from 'src/app/images-display/shared/image.model';
-import { addImage, deleteImage } from '../actions/images.actions';
+import { createReducer, on, State } from '@ngrx/store';
+import { ImageModel } from 'src/app/images-display/shared/image.model';
 
-export const initialState: ReadonlyArray<Image> = [];
+import { ImagesActions } from '../actions/images.actions';
+import { ImageState } from '../image.state';
+
+export const initialState: ImageState = {
+  imageCollection: [],
+  preview: false,
+};
 
 export const imagesReducer = createReducer(
   initialState,
-  on(addImage, (state, { image }): ReadonlyArray<Image> => {
-    if (state.indexOf(image) > -1) return state;
-    return [...state, image];
+  on(ImagesActions.addImage, (state, { imageSaved }): ImageState => {
+    // Check if it exists duplicate information into the storage
+    if (state.imageCollection.indexOf(imageSaved) > -1) return state;
+    return {
+      ...state,
+      imageCollection: [...state.imageCollection, imageSaved],
+      preview: true,
+    };
+  }),
+  on(ImagesActions.previewImage, (state): ImageState => {
+    return { ...state, preview: false };
   })
 );

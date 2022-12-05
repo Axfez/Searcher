@@ -7,3 +7,4 @@
     class="col-xs-12 col-sm-6 col-md-4"
     [image]="image"></app-image-card>
 </div>
+<app-image-preview *ngIf="this.preview$ | async"></app-image-preview>

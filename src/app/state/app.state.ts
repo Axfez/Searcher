@@ -1,12 +1,12 @@
 import { ActionReducerMap } from '@ngrx/store';
 
-import { Image } from '../images-display/shared/image.model';
+import { ImageState } from './image.state';
 import { imagesReducer } from './reducers/image.reducer';
 
 export interface AppState {
-  images: ReadonlyArray<Image>;
+  imagesState: ImageState;
 }
 
 export const ROOT_REDUCERS: ActionReducerMap<AppState> = {
-  images: imagesReducer,
+  imagesState: imagesReducer,
 };

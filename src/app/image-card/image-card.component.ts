@@ -1,27 +1,41 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
-import { Image } from '../images-display/shared/image.model';
-import { addImage } from '../state/actions/images.actions';
+import { ImageModel } from '../images-display/shared/image.model';
+import { ImagesActions } from '../state/actions/images.actions';
+import { selectPreviewStatus } from '../state/selectors/image.selectors';
 
 @Component({
   selector: 'app-image-card',
   templateUrl: './image-card.component.html',
   styleUrls: ['./image-card.component.scss'],
 })
-export class ImageCardComponent {
+export class ImageCardComponent implements OnInit {
   visibility: boolean = false;
-
+  preview$: Observable<boolean> = new Observable();
   constructor(private store: Store) {}
-  @Input() image: Image;
+  ngOnInit(): void {
+    this.preview$ = this.store.select(selectPreviewStatus);
+  }
 
-  // Check click on Image for display info and dispatch data to store
-  onPreview(image: Image) {
+  @Input() image: ImageModel;
+
+  // Check hover on Image for display info and dispatch data to store
+  onVisibility() {
     if (this.visibility) {
       this.visibility = false;
     } else {
       this.visibility = true;
-      this.store.dispatch(addImage({ image: image }));
+    }
+  }
+  // Check click on Image to show image preview
+  onPreview(image: ImageModel) {
+    if (this.preview$) {
+      this.store.dispatch(ImagesActions.addImage({ imageSaved: image }));
+      console.log(this.preview$);
+    } else {
+      this.preview$;
     }
   }
 }

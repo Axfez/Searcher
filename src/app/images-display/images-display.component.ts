@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { Observable } from 'rxjs';
+
 import { ImagesService } from '../shared/services/images.service';
-import { Image } from './shared/image.model';
+import { selectPreviewStatus } from '../state/selectors/image.selectors';
+import { ImageModel } from './shared/image.model';
 
 @Component({
   selector: 'app-images-display',
@@ -8,13 +13,14 @@ import { Image } from './shared/image.model';
   styleUrls: ['./images-display.component.scss'],
 })
 export class ImagesDisplayComponent implements OnInit {
-  images: Image[] = [];
-  constructor(private http: ImagesService) {}
+  preview$: Observable<boolean> = new Observable();
+  images: ImageModel[] = [];
+  constructor(private http: ImagesService, private store: Store) {}
 
   ngOnInit(): void {
     this.http.getImages().subscribe(data => {
       this.images = data['hits'];
-      console.log(data);
+      this.preview$ = this.store.select(selectPreviewStatus);
     });
   }
   searchTerm(searchTerm: string) {

@@ -11,12 +11,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ImagesDisplayComponent } from './images-display/images-display.component';
 import { ImageCardComponent } from './image-card/image-card.component';
 import { ROOT_REDUCERS } from './state/app.state';
+import { ImagePreviewComponent } from './image-preview/image-preview.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ImagesDisplayComponent,
     ImageCardComponent,
+    ImagePreviewComponent,
   ],
   imports: [
     BrowserModule,

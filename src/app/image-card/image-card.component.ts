@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { Observable } from 'rxjs';
 
 import { ImageModel } from '../images-display/shared/image.model';
@@ -22,7 +23,7 @@ export class ImageCardComponent implements OnInit {
 
   @Input() image: ImageModel;
 
-  // Check hover on Image for display info and dispatch data to store
+  // Check hover on Image for display info and dispatch data to storage
   onVisibility() {
     if (this.visibility) {
       this.visibility = false;

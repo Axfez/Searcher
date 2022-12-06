@@ -20,7 +20,7 @@ export class NavbarComponent {
     'computer',
     'buildings',
   ];
-
+  // Methods to emit filters values to the images-display component
   onSearchTerm(searchTerm: string) {
     this.search.emit(searchTerm);
     console.log(searchTerm);

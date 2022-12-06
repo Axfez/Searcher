@@ -23,12 +23,14 @@ export class ImagesDisplayComponent implements OnInit {
       this.preview$ = this.store.select(selectPreviewStatus);
     });
   }
+  // Service implementation for searchbar
   searchTerm(searchTerm: string) {
     this.http.searchImages(searchTerm).subscribe(data => {
       this.images = data['hits'];
       console.log(data);
     });
   }
+  // Service implementation for dropdown menu
   searchCategory(category: string) {
     this.http.searchCategory(category).subscribe(data => {
       this.images = data['hits'];

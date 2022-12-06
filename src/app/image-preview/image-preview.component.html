@@ -1,18 +1,26 @@
 <section class="overlay" *ngIf="image$ | async | getLastItem as imageInfo">
-  <div
-    class="row g-0 border w-70 m-2 rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-absolute">
-    <ng-container>
-      <div class="col d-flex flex-column card-description">
-        <span class="d-inline-block mb-2 text-primary"></span>
-        <h3 class="mb-0">{{ imageInfo.id }}</h3>
-        <h5 class="mb-0">{{ imageInfo.views }}</h5>
-        <h5 class="mb-0">{{ imageInfo.likes }}</h5>
-        <h6 class="mb-0">{{ imageInfo.tags }}</h6>
-      </div>
-      <div class="image col-lg-9 col-sm-12 d-lg-block">
-        <img src="{{ imageInfo.webformatURL }}" />
-      </div>
-      <button class="btn btn-danger" (click)="onClosePreview()">Close</button>
-    </ng-container>
+  <div class="card mx-2">
+    <img
+      class="image"
+      src="{{ imageInfo.webformatURL }}"
+      alt="{{ imageInfo.id }}" />
+
+    <div class="card-body row">
+      <strong class="col-6 item">ID:</strong>
+      <span class="col-6 value">{{ imageInfo.id }}</span>
+      <strong class="col-6 item">LIKES:</strong>
+      <span class="col-6 value">{{ imageInfo.likes }}</span>
+      <strong class="col-6 item">VIEWS:</strong>
+      <span class="col-6 value">{{ imageInfo.views }}</span>
+      <strong class="col-6 item">TAGS:</strong>
+      <span class="col-6 value">{{ imageInfo.tags }}</span>
+      <strong class="col-6 item">USER:</strong>
+      <span class="col-6 value">{{ imageInfo.user }}</span>
+      <strong class="col-6 item">Pixabay URL:</strong>
+      <a href="{{ imageInfo.pageURL }}" target="_blank" class="col-6 value"
+        >See Original</a
+      >
+    </div>
+    <button class="btn btn-danger" (click)="onClosePreview()">Close</button>
   </div>
 </section>

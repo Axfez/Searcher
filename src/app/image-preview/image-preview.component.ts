@@ -18,6 +18,7 @@ export class ImagePreviewComponent implements OnInit {
     this.image$ = this.store.select(selectImageData);
     console.log(this.image$);
   }
+  // Change preview state and close the preview
   onClosePreview() {
     this.store.dispatch(ImagesActions.previewImage());
     console.log(this.image$);

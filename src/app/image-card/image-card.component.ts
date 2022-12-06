@@ -14,6 +14,7 @@ import { selectPreviewStatus } from '../state/selectors/image.selectors';
 export class ImageCardComponent implements OnInit {
   visibility: boolean = false;
   preview$: Observable<boolean> = new Observable();
+
   constructor(private store: Store) {}
   ngOnInit(): void {
     this.preview$ = this.store.select(selectPreviewStatus);
@@ -33,7 +34,6 @@ export class ImageCardComponent implements OnInit {
   onPreview(image: ImageModel) {
     if (this.preview$) {
       this.store.dispatch(ImagesActions.addImage({ imageSaved: image }));
-      console.log(this.preview$);
     } else {
       this.preview$;
     }

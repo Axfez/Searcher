@@ -2,9 +2,9 @@
   (search)="searchTerm($event)"
   (categoryPicked)="searchCategory($event)"></app-navbar>
 <div class="row justify-content-center">
+  <app-image-preview *ngIf="this.preview$ | async"></app-image-preview>
   <app-image-card
     *ngFor="let image of images"
     class="col-xs-12 col-sm-6 col-md-4"
     [image]="image"></app-image-card>
 </div>
-<app-image-preview *ngIf="this.preview$ | async"></app-image-preview>

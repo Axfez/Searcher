@@ -12,6 +12,7 @@ import { ImagesDisplayComponent } from './images-display/images-display.componen
 import { ImageCardComponent } from './image-card/image-card.component';
 import { ROOT_REDUCERS } from './state/app.state';
 import { ImagePreviewComponent } from './image-preview/image-preview.component';
+import { GetLastItemPipe } from './shared/pipes/get-last-item.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import { ImagePreviewComponent } from './image-preview/image-preview.component';
     ImagesDisplayComponent,
     ImageCardComponent,
     ImagePreviewComponent,
+    GetLastItemPipe,
   ],
   imports: [
     BrowserModule,

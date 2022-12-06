@@ -13,7 +13,6 @@ export const imagesReducer = createReducer(
   initialState,
   on(ImagesActions.addImage, (state, { imageSaved }): ImageState => {
     // Check if it exists duplicate information into the storage
-    if (state.imageCollection.indexOf(imageSaved) > -1) return state;
     return {
       ...state,
       imageCollection: [...state.imageCollection, imageSaved],
